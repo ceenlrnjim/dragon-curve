@@ -1,6 +1,7 @@
 # dragon-curve
 
 Playing with generating dragon curve fractals
+lein exec -p src\dragon_curve\render.clj 12
 
 ## Usage
 
