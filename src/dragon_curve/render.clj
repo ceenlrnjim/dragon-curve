@@ -3,7 +3,7 @@
            (javax.swing JButton JFrame JComponent JScrollPane))
   (:use dragon-curve.core))
 
-(def LINESIZE 10)
+(def LINESIZE (Integer/parseInt (second *command-line-args*)))
 
 (defn endpoint [[x y] dir]
   (cond (= dir :up) [x (- y LINESIZE)]
@@ -31,18 +31,15 @@
         component (proxy [JComponent] []
                (paint [g]
                  (.setColor g Color/BLUE)
-                  (draw-path g [300 600] (last (paths n)))
-                 ))
-        ]
+                  (draw-path g [300 600] (flatten (paths n))))) ]
     component))
 
 
 (let [frame (JFrame.)]
-  (.add (.getContentPane frame) (JScrollPane. (curve-visualization (Integer/parseInt (second *command-line-args*)))))
+  (.add (.getContentPane frame) (JScrollPane. (curve-visualization (Integer/parseInt (nth *command-line-args* 2)))))
   (doto frame
     (.setBounds 100 0 1000 800)
     (.setDefaultCloseOperation JFrame/EXIT_ON_CLOSE)
-    (.setVisible true)
-    )) 
+    (.setVisible true))) 
  
 
