@@ -1,7 +1,7 @@
 # dragon-curve
 
 Playing with generating dragon curve fractals
-lein exec -p src\dragon_curve\render.clj 5 13
+lein run "{:linesize 5 :iterations 13 :x 200 :y 500}"
 
 ## Usage
 
